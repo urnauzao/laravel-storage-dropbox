@@ -1,3 +1,11 @@
+# Laravel Dropbox Storage
+Neste tutorial, temos uma aplicação Laravel que utiliza o storage via Dropbox, gerenciando assim arquivos no Dropbox.
+
+## Vídeo sobre o projeto
+[https://www.youtube.com/watch?v=183WR2BtGTA](https://www.youtube.com/watch?v=183WR2BtGTA)
+
+## Comandos utilizados
+
 - Criar projeto Laravel
 ```sh
 curl -s "https://laravel.build/2023-09-03-laravel-dropbox?with=pgsql,redis" | bash
@@ -12,12 +20,36 @@ cd 2023-09-03-laravel-dropbox
 git init
 ```
 
+- Adicionar arquivos para serem commitados
+```sh
 git add .
+```
+
+- Commitar as alterações
+```sh
 git commit -m 'start project'
+```
+
+- Iniciar o Sail
+```sh
 sail up -d
+```
+
+- Adicionar dependencia do dropbox
+```sh
 sail composer require spatie/flysystem-dropbox
+```
+
+- Abrir VS Code
+```sh
 code .
+```
+
+- Criar a provader com o artisan
+```sh
 sail artisan make:provider DropboxServiceProvider
+```
+
 - editar `app/Providers/DropboxServiceProvider.php`
 ```php
 namespace App\Providers;
@@ -71,7 +103,7 @@ https://www.dropbox.com/developers
 - Adicionar no `.env`
 DROPBOX_ACCESS_TOKEN=<your-access-token>
 
-- Adicionar ao config/filesytem.php
+- Adicionar ao `config/filesytem.php`
 ```php
     //...
     'disks' => [
