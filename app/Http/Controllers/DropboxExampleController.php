@@ -158,7 +158,10 @@ class DropboxExampleController extends Controller
         $file = $files[10];
         $item = $this->storage()->url($file);
         $file = str_replace('/', '_', $file);
-        return response()->streamDownload(fn() => $item, $file);
+        return response()->streamDownload(function () use ($item) {
+            echo Http::get($item)->body();
+        }, $file);
+
     }
 
     /**
